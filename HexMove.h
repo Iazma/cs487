@@ -12,6 +12,7 @@ class HexMove {
     int getY (void);
 
   private:
+    // Coordinates
     int x_;
     int y_;
 };

@@ -3,14 +3,19 @@
 
 #include "Player.h"
 
+// Class representing a person playing the game
 class HumanPlayer : public Player {
   public:
+    // Initialize a HumanPlayer to a specific color
+    HumanPlayer (Hex::Color color);
+
+    virtual ~HumanPlayer (void) {};
     // Take a turn
     // Print board, ask user for move coords
-    HexMove playTurn (BoardState & board);
+    virtual HexMove playTurn (BoardState & board);
 
     // Inform the player that they won
-    void win (void);
+    virtual void win (void);
 };
 
 #endif

@@ -5,8 +5,10 @@
 
 #include "BoardState.h"
 
+// Forward declarations
 class Player;
 
+// Class to manage a game of Hex
 class Manager {
   public:
     // Initialize manager with board game size and pointers to the player objects

@@ -4,12 +4,12 @@
 #include <memory>
 #include <vector>
 
+#include "Hex.h"
+
+// Forward declarations
 class BoardNode;
 
-namespace Hex {
-  enum Color { BLUE, RED };
-}
-
+// Class representing a Hex board
 class BoardState {
   public:
     // Initialize a board of size n x n
@@ -22,6 +22,7 @@ class BoardState {
     void set (int x, int y, Hex::Color color);
 
   private:
+    // 2D vector of board pointers
     std::vector<std::vector<std::unique_ptr<BoardNode>>> board;
 };
 
