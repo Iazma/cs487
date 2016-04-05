@@ -47,6 +47,13 @@ class BoardNode {
     std::shared_ptr<BoardNode> right;
     std::shared_ptr<BoardNode> downLeft;
     std::shared_ptr<BoardNode> downRight;
+
+    // Location information
+    int x_;
+    int y_;
+
+    // Color
+    Hex::Color color_;
 };
 
 #endif
