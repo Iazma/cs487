@@ -5,6 +5,7 @@
 
 namespace Hex {
   enum Color { BLANK, BLUE, RED };
+  enum Orientation { ROW, COL };
 }
 
 #endif

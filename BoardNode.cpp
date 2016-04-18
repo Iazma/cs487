@@ -21,28 +21,28 @@ Hex::Color BoardNode::getColor (void) {
   return color_;
 }
 
-BoardNode & BoardNode::getUL (void) const {
-  return *upLeft;
+std::shared_ptr<BoardNode> BoardNode::getUL (void) const {
+  return upLeft;
 }
 
-BoardNode & BoardNode::getUR (void) const {
-  return *upRight;
+std::shared_ptr<BoardNode> BoardNode::getUR (void) const {
+  return upRight;
 }
 
-BoardNode & BoardNode::getL (void) const {
-  return *left;
+std::shared_ptr<BoardNode> BoardNode::getL (void) const {
+  return left;
 }
 
-BoardNode & BoardNode::getR (void) const {
-  return *right;
+std::shared_ptr<BoardNode> BoardNode::getR (void) const {
+  return right;
 }
 
-BoardNode & BoardNode::getDL (void) const {
-  return *downLeft;
+std::shared_ptr<BoardNode> BoardNode::getDL (void) const {
+  return downLeft;
 }
 
-BoardNode & BoardNode::getDR (void) const {
-  return *downRight;
+std::shared_ptr<BoardNode> BoardNode::getDR (void) const {
+  return downRight;
 }
 
 void BoardNode::setUL (std::shared_ptr<BoardNode> node) {
