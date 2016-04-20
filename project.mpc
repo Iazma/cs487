@@ -1,0 +1,23 @@
+project (hexPlayer) {
+  exename = hexGame
+  install = .
+
+  Source_Files {
+    BoardStraightIterator.cpp
+    BoardRowIterator.cpp
+    BoardColumnIterator.cpp
+    BoardNode.cpp
+    BoardPrinter.cpp
+    BoardState.cpp
+    RandomPlayer.cpp
+    HexMove.cpp
+    main.cpp
+    Manager.cpp
+    Player.cpp
+    WinSearcher.cpp
+  }
+
+  specific (make) {
+    compile_flags += -std=c++11 -g
+  }
+}

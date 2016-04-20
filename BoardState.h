@@ -8,6 +8,7 @@
 
 // Forward declarations
 class BoardNode;
+class HexMove;
 
 // Class representing a Hex board
 class BoardState {
@@ -16,14 +17,25 @@ class BoardState {
     BoardState (int size);
 
     // Get the board node from the given x and y coordinates
-    BoardNode & get (int x, int y) const;
+    std::shared_ptr<BoardNode> get (int x, int y) const;
 
+    // Get the begin() iterator for the given row
+    std::vector<std::shared_ptr<BoardNode>>::iterator getRowIterator (int x);
+
+    // Get the end() iterator for the given row
+    std::vector<std::shared_ptr<BoardNode>>::iterator getRowEnd (int x);
     // Set a board node to a given color
     void set (int x, int y, Hex::Color color);
 
+    // Get board size
+    int getSize (void);
+
   private:
     // 2D vector of board pointers
-    std::vector<std::vector<std::unique_ptr<BoardNode>>> board;
+    std::vector<std::vector<std::shared_ptr<BoardNode>>> board;
+
+    // Board size
+    int size_;
 };
 
 #endif

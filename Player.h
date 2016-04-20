@@ -27,6 +27,9 @@ class Player {
     // Inform the player that they won
     virtual void win (void) = 0;
 
+    // Inform the player that they lost
+    virtual void lose (void) = 0;
+
   protected:
     // This player's color
     Hex::Color playerColor;

@@ -12,7 +12,7 @@ class Player;
 class Manager {
   public:
     // Initialize manager with board game size and pointers to the player objects
-    Manager (int size, Player * p1, Player * p2);
+    Manager (int size, std::shared_ptr<Player> p1, std::shared_ptr<Player> p2);
 
     // Begin running the game
     void run (void);
@@ -27,8 +27,8 @@ class Manager {
 
   private:
     // Player pointers
-    std::unique_ptr<Player> player1;
-    std::unique_ptr<Player> player2;
+    std::shared_ptr<Player> player1;
+    std::shared_ptr<Player> player2;
 
     // Current game's board
     BoardState board;

@@ -7,10 +7,13 @@
 
 // Forward declarations
 class HexMove;
+class BoardNodeIterator;
 
 /// Class representing a space on the board
 class BoardNode {
   public:
+    typedef BoardNodeIterator iterator;
+
     // Init boardnode with it's place reference
     BoardNode (int x, int y);
     
@@ -24,12 +27,12 @@ class BoardNode {
     Hex::Color getColor (void);
 
     // Neighbor getters
-    BoardNode & getUL (void) const;
-    BoardNode & getUR (void) const;
-    BoardNode & getL (void) const;
-    BoardNode & getR (void) const;
-    BoardNode & getDL (void) const;
-    BoardNode & getDR (void) const;
+    std::shared_ptr<BoardNode> getUL (void) const;
+    std::shared_ptr<BoardNode> getUR (void) const;
+    std::shared_ptr<BoardNode> getL (void) const;
+    std::shared_ptr<BoardNode> getR (void) const;
+    std::shared_ptr<BoardNode> getDL (void) const;
+    std::shared_ptr<BoardNode> getDR (void) const;
 
     // Neighbor setters
     void setUL (std::shared_ptr<BoardNode> node);
