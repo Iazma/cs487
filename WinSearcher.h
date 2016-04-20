@@ -12,13 +12,12 @@ class BoardNode;
 class WinSearcher {
   public:
     // Set what sides we're searching from and what color we're looking for
-    WinSearcher (Hex::Orientation sides, Hex::Color color, BoardState & board);
+    WinSearcher (Hex::Color color, BoardState & board);
   
     // Search for a path of color from one side to the other
     bool findPath (void);
 
   private:
-    Hex::Orientation sides_;
     Hex::Color color_;
     BoardState & board_;
 

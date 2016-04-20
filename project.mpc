@@ -3,6 +3,9 @@ project (hexPlayer) {
   install = .
 
   Source_Files {
+    BoardStraightIterator.cpp
+    BoardRowIterator.cpp
+    BoardColumnIterator.cpp
     BoardNode.cpp
     BoardPrinter.cpp
     BoardState.cpp

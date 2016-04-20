@@ -3,14 +3,13 @@
 #include "BoardState.h"
 #include "BoardNode.h"
 
-WinSearcher::WinSearcher (Hex::Orientation sides, Hex::Color color, BoardState & board)
-  : sides_(sides)
-    ,color_(color)
+WinSearcher::WinSearcher (Hex::Color color, BoardState & board)
+  : color_(color)
     ,board_(board)
 {};
 
 bool WinSearcher::findPath (void) {
-  if (sides_ == Hex::ROW) {
+  if (color_ == Hex::BLUE) {
     setupRows();
   }
   else {
@@ -33,11 +32,16 @@ bool WinSearcher::findPath (void) {
 void WinSearcher::setupRows (void) {
   for (int i = 0; i < board_.getSize(); ++i) {
     auto node = board_.get(i, 0);
+    auto goalNode = board_.get(i, board_.getSize()-1);
 
-    fringe.push(node);
+    if (node->getColor() == color_) {
+      fringe.push(node);
+    }
     visitedList[node] = true;
 
-    goalList[board_.get(i, board_.getSize()-1)] = true;
+    if (goalNode->getColor() == color_) {
+      goalList[board_.get(i, board_.getSize()-1)] = true;
+    }
   }
 }
 
@@ -76,6 +80,6 @@ bool WinSearcher::checkNeighbors (std::shared_ptr<BoardNode> node) {
 
   return false;
 }
-  
+
 
 

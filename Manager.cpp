@@ -42,8 +42,8 @@ bool Manager::doPlayerMove (Player & p) {
 }
 
 bool Manager::boardCheck (void) {
-  WinSearcher blueSearch(Hex::COL, Hex::BLUE, board);
-  WinSearcher redSearch(Hex::ROW, Hex::RED, board);
+  WinSearcher blueSearch(Hex::BLUE, board);
+  WinSearcher redSearch(Hex::RED, board);
 
   if (blueSearch.findPath() || redSearch.findPath()) {
     return true;
