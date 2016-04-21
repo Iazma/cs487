@@ -8,6 +8,7 @@
 // Forward declarations
 class HexMove;
 class BoardNodeIterator;
+class NodeVisitor;
 
 /// Class representing a space on the board
 class BoardNode {
@@ -41,6 +42,9 @@ class BoardNode {
     void setR (std::shared_ptr<BoardNode> node);
     void setDL (std::shared_ptr<BoardNode> node);
     void setDR (std::shared_ptr<BoardNode> node);
+
+    // Accept NodeVisitors
+    void accept (NodeVisitor & v);
 
   private:
     // Neighbor pointers
