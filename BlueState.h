@@ -13,6 +13,6 @@ class BlueState : public NodeState {
     ~BlueState (void);
 
     // Accept visitors
-    void accept (NodeVisitor & v, BoardNode & n);
+    void accept (BoardNode & n, NodeVisitor & v);
 };
 #endif

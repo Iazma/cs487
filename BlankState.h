@@ -13,7 +13,7 @@ class BlankState : public NodeState {
     ~BlankState (void);
 
     // Accept visitors
-    void accept (NodeVisitor & v, BoardNode & n);
+    void accept (BoardNode & n, NodeVisitor & v);
 };
 
 #endif

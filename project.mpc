@@ -15,6 +15,12 @@ project (hexPlayer) {
     Manager.cpp
     Player.cpp
     WinSearcher.cpp
+
+    NodeState.cpp
+    BlankState.cpp
+    BlueState.cpp
+    RedState.cpp
+    NodeStateFactory.cpp 
   }
 
   specific (make) {

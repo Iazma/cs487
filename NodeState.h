@@ -1,6 +1,8 @@
 #ifndef NODE_STATE_H
 #define NODE_STATE_H
 
+#include "Hex.h"
+
 class BoardNode;
 class NodeVisitor;
 
@@ -10,6 +12,6 @@ class NodeState {
     virtual ~NodeState (void);
 
     // Accept visitors to the state
-    virtual void accept (NodeVisitor & v, BoardNode & n) = 0;
+    virtual void accept (BoardNode & n, NodeVisitor & v) = 0;
 };
 #endif
