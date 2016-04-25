@@ -2,6 +2,7 @@
 #define NODE_STATE_H
 
 #include "Hex.h"
+#include <memory>
 
 class BoardNode;
 class NodeVisitor;

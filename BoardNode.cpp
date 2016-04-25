@@ -1,11 +1,14 @@
 #include "BoardNode.h"
 #include "HexMove.h"
+#include "NodeStateFactory.h"
+#include "NodeState.h"
 
 BoardNode::BoardNode (int x, int y)
   : x_(x)
    ,y_(y)
-   ,color_(Hex::BLANK)
-{};
+   ,state(NodeStateFactory::getFactory()->getBlankState())
+{
+};
 
 HexMove BoardNode::getLocation (void) const {
   HexMove move(x_, y_);
@@ -14,11 +17,15 @@ HexMove BoardNode::getLocation (void) const {
 }
 
 void BoardNode::colorize (Hex::Color color) {
-  color_ = color;
-}
-
-Hex::Color BoardNode::getColor (void) {
-  return color_;
+  if (color == Hex::BLUE) {
+    state = NodeStateFactory::getFactory()->getBlueState();
+  }
+  else if (color == Hex::RED) {
+    state = NodeStateFactory::getFactory()->getRedState();
+  }
+  else {
+    state = NodeStateFactory::getFactory()->getBlankState();
+  }
 }
 
 std::shared_ptr<BoardNode> BoardNode::getUL (void) const {
@@ -69,4 +76,6 @@ void BoardNode::setDR (std::shared_ptr<BoardNode> node) {
   downRight = node;
 }
 
-
+void BoardNode::accept (NodeVisitor & v) {
+  state->accept(*this, v);
+}

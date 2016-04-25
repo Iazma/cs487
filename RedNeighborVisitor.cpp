@@ -8,11 +8,6 @@ RedNeighborVisitor::RedNeighborVisitor (std::deque<std::shared_ptr<BoardNode>> &
 
 RedNeighborVisitor::~RedNeighborVisitor (void) { };
 
-void RedNeighborVisitor::visitBlue (BoardNode &) { /* no op */ };
-
 void RedNeighborVisitor::visitRed (BoardNode & node) {
   fringe.emplace_back (node);
 }
-
-void RedNeighborVisitor::visitBlank (BoardNode &) { /* no op */ };
-

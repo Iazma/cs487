@@ -19,11 +19,7 @@ class Manager {
 
     // Ask for a player's move and process it
     // Returns true if that player won
-    bool doPlayerMove (Player & p);
-
-    // Check the board for a win state
-    // Returns true if win state exists
-    bool boardCheck (void);
+    void doPlayerMove (Player & p);
 
   private:
     // Player pointers

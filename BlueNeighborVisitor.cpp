@@ -13,7 +13,3 @@ BlueNeighborVisitor::~BlueNeighborVisitor (void) { };
 void BlueNeighborVisitor::visitBlue (BoardNode & node) {
   this->fringe.emplace_back(node);
 }
-
-void BlueNeighborVisitor::visitRed (BoardNode &) { /* no op */ }
-
-void BlueNeighborVisitor::visitBlank (BoardNode &) { /* no op */ }

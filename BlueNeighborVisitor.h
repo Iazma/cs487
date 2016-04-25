@@ -16,8 +16,6 @@ class BlueNeighborVisitor : public NeighborVisitor {
     ~BlueNeighborVisitor (void);
 
     void visitBlue (BoardNode & node);
-    void visitRed (BoardNode & node);
-    void visitBlank (BoardNode & node);
 };
 
 #endif

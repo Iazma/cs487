@@ -7,25 +7,24 @@
 
 // Forward declarations
 class HexMove;
+class NodeState;
 class BoardNodeIterator;
 class NodeVisitor;
+class NodeStateFactory;
 
 /// Class representing a space on the board
 class BoardNode {
   public:
-    typedef BoardNodeIterator iterator;
-
     // Init boardnode with it's place reference
     BoardNode (int x, int y);
     
+    virtual ~BoardNode (void);
+
     // Get the coordinates of this node
     HexMove getLocation (void) const;
 
     // Set color of hex
     void colorize (Hex::Color color);
-
-    // Get color of hex
-    Hex::Color getColor (void);
 
     // Neighbor getters
     std::shared_ptr<BoardNode> getUL (void) const;
@@ -44,9 +43,9 @@ class BoardNode {
     void setDR (std::shared_ptr<BoardNode> node);
 
     // Accept NodeVisitors
-    void accept (NodeVisitor & v);
+    virtual void accept (NodeVisitor & v);
 
-  private:
+  protected:
     // Neighbor pointers
     std::shared_ptr<BoardNode> upLeft;
     std::shared_ptr<BoardNode> upRight;
@@ -59,8 +58,8 @@ class BoardNode {
     int x_;
     int y_;
 
-    // Color
-    Hex::Color color_;
+    // Color state
+    std::shared_ptr<NodeState> state;
 };
 
 #endif
