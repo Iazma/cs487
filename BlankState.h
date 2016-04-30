@@ -12,8 +12,15 @@ class BlankState : public NodeState {
     BlankState (void);
     ~BlankState (void);
 
+    // Returns true for this state
+    bool isBlank (void);
+
+    void printColor (std::ostream & out);
+
+    Hex::Color getColor (void);
+
     // Accept visitors
-    void accept (BoardNode & n, NodeVisitor & v);
+    void accept (BoardNode * n, NodeVisitor & v);
 };
 
 #endif

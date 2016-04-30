@@ -15,7 +15,10 @@ class DummyPurple;
 class NodeStateFactory {
   public:
     // Singleton up in this place
-    static std::shared_ptr<NodeStateFactory> getFactory (void);
+    static NodeStateFactory * getFactory (void);
+
+    static void killFactory (void);
+
     /* State getters */
 
     // Get a blue state
@@ -38,7 +41,7 @@ class NodeStateFactory {
   private:
     NodeStateFactory (void);
 
-    static std::shared_ptr<NodeStateFactory> factoryInstance;
+    static NodeStateFactory * factoryInstance;
 
     // State instances 
     std::shared_ptr<BlueState> blueInstance;

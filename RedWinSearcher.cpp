@@ -23,6 +23,7 @@ void RedWinSearcher::setup (void) {
   // First get goal nodes
   while (!bottom.finished()) {
     bottom->accept(*fringeAddVisitor);
+    ++bottom;
   }
 
   // Put them in goal map
@@ -34,5 +35,6 @@ void RedWinSearcher::setup (void) {
   // Now get the start nodes
   while (!top.finished()) {
     top->accept(*fringeAddVisitor);
+    ++top;
   }
 }

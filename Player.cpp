@@ -1,17 +1,13 @@
 #include "Player.h"
+#include "NodeState.h"
 
-Player::Player (Hex::Color color) 
-  : playerColor(color) {};
+Player::Player (std::shared_ptr<NodeState> c) 
+  : color(c) {};
 
 Hex::Color Player::getColor (void) {
-  return playerColor;
+  return color->getColor();
 }
 
-void Player::swapColor (void) {
-  if (playerColor == Hex::BLUE) {
-    playerColor = Hex::RED;
-  }
-  else {
-    playerColor = Hex::BLUE;
-  }
+void Player::printColor (std::ostream & out) {
+  color->printColor(out);
 }

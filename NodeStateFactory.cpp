@@ -6,18 +6,22 @@
 #include "BlankState.h"
 #include "DummyState.h"
 
+// Initialize static variable
+NodeStateFactory * NodeStateFactory::factoryInstance = nullptr;
+
 NodeStateFactory::NodeStateFactory (void) 
   : blueInstance(std::make_shared<BlueState>())
     ,redInstance(std::make_shared<RedState>())
     ,blankInstance(std::make_shared<BlankState>())
-    ,dummyBlueInstance(std::make_shared<DummyBlue>())
-    ,dummyRedInstance(std::make_shared<DummyRed>())
-    ,dummyPurpleInstance(std::make_shared<DummyPurple>())
 {};
 
-std::shared_ptr<NodeStateFactory> NodeStateFactory::getFactory (void) {
+void NodeStateFactory::killFactory (void) {
+  delete factoryInstance;
+}
+
+NodeStateFactory * NodeStateFactory::getFactory (void) {
   if (!factoryInstance) {
-    factoryInstance = std::make_shared<NodeStateFactory>();
+    factoryInstance = new NodeStateFactory();
   }
 
   return factoryInstance;
@@ -36,13 +40,13 @@ std::shared_ptr<NodeState> NodeStateFactory::getBlankState (void) {
 }
 
 std::shared_ptr<NodeState> NodeStateFactory::getBlueDummyState (void) {
-  return dummyBlueInstance;
+  return nullptr;
 }
 
 std::shared_ptr<NodeState> NodeStateFactory::getRedDummyState (void) {
-  return dummyRedInstance;
+  return nullptr;
 }
 
 std::shared_ptr<NodeState> NodeStateFactory::getPurpleDummyState (void) {
-  return dummyPurpleInstance;
+  return nullptr;
 }

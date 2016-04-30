@@ -10,6 +10,6 @@ BlueNeighborVisitor::BlueNeighborVisitor (std::deque<std::shared_ptr<BoardNode>>
 
 BlueNeighborVisitor::~BlueNeighborVisitor (void) { };
 
-void BlueNeighborVisitor::visitBlue (BoardNode & node) {
+void BlueNeighborVisitor::visitBlue (BoardNode * node) {
   this->fringe.emplace_back(node);
 }

@@ -7,8 +7,8 @@
 #include "BoardState.h"
 #include "HexMove.h"
 
-RandomPlayer::RandomPlayer (Hex::Color color)
-  : Player(color)
+RandomPlayer::RandomPlayer (std::shared_ptr<NodeState> c)
+  : Player(c)
 {};
 
 HexMove RandomPlayer::playTurn (BoardState & board) {
@@ -24,7 +24,7 @@ HexMove RandomPlayer::playTurn (BoardState & board) {
   node = board.get(x, y);
 
   // Until you find a blank node, keep randomly searching
-  while (node->getColor() != Hex::BLANK) {
+  while (!node->isBlank()) {
     x = (x + rand()) % size;
     y = (y + rand()) % size;
 
@@ -35,7 +35,8 @@ HexMove RandomPlayer::playTurn (BoardState & board) {
 }
 
 void RandomPlayer::win (void) {
-  std::cout << this->playerColor << " WINS YAY ME!" << std::endl;
+  this->printColor(std::cout);
+  std::cout << " WINS YAY ME!" << std::endl;
 }
 
 void RandomPlayer::lose (void) {

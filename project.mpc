@@ -3,24 +3,36 @@ project (hexPlayer) {
   install = .
 
   Source_Files {
-    BoardStraightIterator.cpp
-    BoardRowIterator.cpp
-    BoardColumnIterator.cpp
-    BoardNode.cpp
+    main.cpp 
+
     BoardPrinter.cpp
+
+    BoardNode.cpp
     BoardState.cpp
-    RandomPlayer.cpp
     HexMove.cpp
-    main.cpp
+    
     Manager.cpp
     Player.cpp
-    WinSearcher.cpp
+    RandomPlayer.cpp
 
-    NodeState.cpp
     BlankState.cpp
     BlueState.cpp
+    NodeState.cpp
+    NodeStateFactory.cpp
     RedState.cpp
-    NodeStateFactory.cpp 
+
+    BlueNeighborVisitor.cpp
+    NeighborVisitor.cpp
+    RedNeighborVisitor.cpp
+
+    BlueWinSearcher.cpp   
+    RedWinSearcher.cpp
+    WinSearcher.cpp
+
+    BoardColumnIterator.cpp
+    BoardCrossIterator.cpp
+    BoardStraightIterator.cpp
+    BoardRowIterator.cpp
   }
 
   specific (make) {

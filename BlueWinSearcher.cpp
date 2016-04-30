@@ -23,6 +23,7 @@ void BlueWinSearcher::setup (void) {
   // First get the goal nodes
   while (!right.finished()) {
     right->accept(*fringeAddVisitor);
+    ++right;
   }
 
   // And put them in the goal map
@@ -34,6 +35,7 @@ void BlueWinSearcher::setup (void) {
   // Now get the start nodes
   while (!left.finished()) {
     left->accept(*fringeAddVisitor);
+    ++left;
   }
 }
 

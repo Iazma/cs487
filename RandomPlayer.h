@@ -6,7 +6,7 @@
 // Class representing a computer player that plays randomly
 class RandomPlayer : public Player {
   public:
-    RandomPlayer (Hex::Color color);
+    RandomPlayer (std::shared_ptr<NodeState> c);
 
     ~RandomPlayer (void) {};
 

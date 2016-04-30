@@ -5,9 +5,8 @@
 #include "NeighborVisitor.h"
 #include "BoardStraightIterator.h"
 
-WinSearcher::WinSearcher (BoardState & b, NeighborVisitor v)
+WinSearcher::WinSearcher (BoardState & b)
   : board(b)
-    ,visitor(v)
 {};
 
 bool WinSearcher::findPath (void) {
@@ -32,10 +31,7 @@ bool WinSearcher::findPath (void) {
 }
 
 void WinSearcher::visitNeighbors (std::shared_ptr<BoardNode> node) {
-  node->getUL()->accept(visitor);
-  node->getUR()->accept(visitor);
-  node->getR()->accept(visitor);
-  node->getDR()->accept(visitor);
-  node->getDL()->accept(visitor);
-  node->getL()->accept(visitor);
+  for (auto neighbor : node->getNeighbors() ) {
+    neighbor.second->accept(*fringeAddVisitor);
+  }
 }

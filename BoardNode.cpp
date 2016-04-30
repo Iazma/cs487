@@ -10,6 +10,14 @@ BoardNode::BoardNode (int x, int y)
 {
 };
 
+BoardNode::BoardNode (BoardNode & copy)
+  : x_(copy.x_)
+    ,y_(copy.y_)
+    ,state(copy.state)
+{};
+
+BoardNode::~BoardNode (void) { };
+
 HexMove BoardNode::getLocation (void) const {
   HexMove move(x_, y_);
 
@@ -28,54 +36,62 @@ void BoardNode::colorize (Hex::Color color) {
   }
 }
 
-std::shared_ptr<BoardNode> BoardNode::getUL (void) const {
-  return upLeft;
+bool BoardNode::isBlank (void) {
+  return state->isBlank();
 }
 
-std::shared_ptr<BoardNode> BoardNode::getUR (void) const {
-  return upRight;
+std::shared_ptr<BoardNode> BoardNode::getUL (void) {
+  return neighbors["UL"];
 }
 
-std::shared_ptr<BoardNode> BoardNode::getL (void) const {
-  return left;
+std::shared_ptr<BoardNode> BoardNode::getUR (void) {
+  return neighbors["UR"];
 }
 
-std::shared_ptr<BoardNode> BoardNode::getR (void) const {
-  return right;
+std::shared_ptr<BoardNode> BoardNode::getL (void) {
+  return neighbors["L"];
 }
 
-std::shared_ptr<BoardNode> BoardNode::getDL (void) const {
-  return downLeft;
+std::shared_ptr<BoardNode> BoardNode::getR (void) {
+  return neighbors["R"];
 }
 
-std::shared_ptr<BoardNode> BoardNode::getDR (void) const {
-  return downRight;
+std::shared_ptr<BoardNode> BoardNode::getDL (void) {
+  return neighbors["DL"];
+}
+
+std::shared_ptr<BoardNode> BoardNode::getDR (void) {
+  return neighbors["DR"];
+}
+
+std::map<std::string, std::shared_ptr<BoardNode>> & BoardNode::getNeighbors (void) {
+  return neighbors;
 }
 
 void BoardNode::setUL (std::shared_ptr<BoardNode> node) {
-  upLeft = node;
+  neighbors["UL"] = node;
 }
 
 void BoardNode::setUR (std::shared_ptr<BoardNode> node) {
-  upRight = node;
+  neighbors["UR"] = node;
 }
 
 void BoardNode::setL (std::shared_ptr<BoardNode> node) {
-  left = node;
+  neighbors["L"] = node;
 }
 
 void BoardNode::setR (std::shared_ptr<BoardNode> node) {
-  right = node;
+  neighbors["R"] = node;
 }
 
 void BoardNode::setDL (std::shared_ptr<BoardNode> node) {
-  downLeft = node;
+  neighbors["DL"] = node;
 }
 
 void BoardNode::setDR (std::shared_ptr<BoardNode> node) {
-  downRight = node;
+  neighbors["DR"] = node;
 }
 
 void BoardNode::accept (NodeVisitor & v) {
-  state->accept(*this, v);
+  state->accept(this, v);
 }

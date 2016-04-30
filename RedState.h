@@ -12,8 +12,12 @@ class RedState : public NodeState {
     RedState (void);
     ~RedState (void);
 
+    void printColor (std::ostream & out);
+
+    Hex::Color getColor (void);
+
     // Accept visitors
-    void accept (BoardNode & n, NodeVisitor & v);
+    void accept (BoardNode * n, NodeVisitor & v);
 };
 
 #endif

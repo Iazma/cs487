@@ -1,7 +1,9 @@
 #ifndef BOARD_NODE_H
 #define BOARD_NODE_H
 
+#include <map>
 #include <memory>
+#include <string>
 
 #include "Hex.h"
 
@@ -18,6 +20,8 @@ class BoardNode {
     // Init boardnode with it's place reference
     BoardNode (int x, int y);
     
+    BoardNode (BoardNode & copy);
+
     virtual ~BoardNode (void);
 
     // Get the coordinates of this node
@@ -26,13 +30,18 @@ class BoardNode {
     // Set color of hex
     void colorize (Hex::Color color);
 
+    // Returns true if node is blank
+    bool isBlank (void);
+
     // Neighbor getters
-    std::shared_ptr<BoardNode> getUL (void) const;
-    std::shared_ptr<BoardNode> getUR (void) const;
-    std::shared_ptr<BoardNode> getL (void) const;
-    std::shared_ptr<BoardNode> getR (void) const;
-    std::shared_ptr<BoardNode> getDL (void) const;
-    std::shared_ptr<BoardNode> getDR (void) const;
+    std::shared_ptr<BoardNode> getUL (void);
+    std::shared_ptr<BoardNode> getUR (void);
+    std::shared_ptr<BoardNode> getL (void) ;
+    std::shared_ptr<BoardNode> getR (void);
+    std::shared_ptr<BoardNode> getDL (void);
+    std::shared_ptr<BoardNode> getDR (void);
+
+    std::map<std::string, std::shared_ptr<BoardNode>> & getNeighbors (void);
 
     // Neighbor setters
     void setUL (std::shared_ptr<BoardNode> node);
@@ -47,12 +56,7 @@ class BoardNode {
 
   protected:
     // Neighbor pointers
-    std::shared_ptr<BoardNode> upLeft;
-    std::shared_ptr<BoardNode> upRight;
-    std::shared_ptr<BoardNode> left;
-    std::shared_ptr<BoardNode> right;
-    std::shared_ptr<BoardNode> downLeft;
-    std::shared_ptr<BoardNode> downRight;
+    std::map<std::string, std::shared_ptr<BoardNode>> neighbors;
 
     // Location information
     int x_;
